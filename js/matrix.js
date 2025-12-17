@@ -1,10 +1,18 @@
-import { ctx, canvas } from './canvas.js';
+// 使用全局命名空间
+(function() {
+    const canvas = window.App.canvas;
+    const ctx = window.App.ctx;
+    
+    if (!canvas || !ctx) {
+        console.error('Canvas not initialized!');
+        return;
+    }
 
-// 字符集 - 用于数字雨背景
-const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ田由甲申甴电甶男甸甹町画甼甽甾甿畀畁畂畃畄畅畆畇畈畉畊畋界畍畎畏畐畑';
+    // 字符集 - 用于数字雨背景
+    const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ田由甲申甴电甶男甸甹町画甼甽甾甿畀畁畂畃畄畅畆畇畈畉畊畋界畍畎畏畐畑';
 
-const fontSize = 14;
-let columns = Math.floor(canvas.width / fontSize);
+    const fontSize = 14;
+    let columns = Math.floor(canvas.width / fontSize);
 
 // 为每一列创建一个下落位置
 const drops = [];
@@ -13,7 +21,7 @@ for (let i = 0; i < columns; i++) {
 }
 
 // 绘制数字雨效果
-export function drawMatrix() {
+function drawMatrix() {
     // 设置数字雨文字样式
     ctx.fillStyle = '#00ff00';
     ctx.font = fontSize + 'px monospace';
@@ -37,7 +45,7 @@ export function drawMatrix() {
 }
 
 // 处理窗口大小改变
-export function handleResize() {
+function handleMatrixResize() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     
@@ -57,3 +65,7 @@ export function handleResize() {
     columns = newColumns;
 }
 
+    // 导出到全局命名空间
+    window.App.drawMatrix = drawMatrix;
+    window.App.handleMatrixResize = handleMatrixResize;
+})();

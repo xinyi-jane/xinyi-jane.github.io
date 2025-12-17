@@ -1,7 +1,15 @@
-import { ctx, canvas } from './canvas.js';
+// 使用全局命名空间
+(function() {
+    const canvas = window.App.canvas;
+    const ctx = window.App.ctx;
+    
+    if (!canvas || !ctx) {
+        console.error('Canvas not initialized!');
+        return;
+    }
 
-// 歌词数据
-export let lyrics = [
+    // 歌词数据
+    let lyrics = [
     '终于做了这个决定',
     '别人怎么说我不理',
     '只要你也一样的肯定',
@@ -72,7 +80,7 @@ function calculateLinePositions() {
 let linePositions = calculateLinePositions();
 
 // 添加歌词到活跃列表的辅助函数
-export function addLyricToActive(text, isUserInput = false) {
+function addLyricToActive(text, isUserInput = false) {
     // 设置字体以计算文本宽度
     ctx.font = 'bold ' + lyricFontSize + 'px "Microsoft YaHei", "PingFang SC", "SimHei", "STHeiti", "Arial Unicode MS", sans-serif';
     ctx.textAlign = 'left';
@@ -112,7 +120,7 @@ export function addLyricToActive(text, isUserInput = false) {
 }
 
 // 绘制歌词
-export function drawLyrics() {
+function drawLyrics() {
     // 设置歌词文字样式
     ctx.font = 'bold ' + lyricFontSize + 'px "Microsoft YaHei", "PingFang SC", "SimHei", "STHeiti", "Arial Unicode MS", sans-serif';
     ctx.textAlign = 'left';
@@ -200,7 +208,7 @@ export function drawLyrics() {
 }
 
 // 处理窗口大小改变时更新歌词位置
-export function handleLyricsResize() {
+function handleLyricsResize() {
     linePositions = calculateLinePositions();
     // 更新所有活跃歌词的垂直位置
     activeLyrics.forEach((lyric) => {
@@ -208,3 +216,9 @@ export function handleLyricsResize() {
     });
 }
 
+    // 导出到全局命名空间
+    window.App.lyrics = lyrics;
+    window.App.addLyricToActive = addLyricToActive;
+    window.App.drawLyrics = drawLyrics;
+    window.App.handleLyricsResize = handleLyricsResize;
+})();

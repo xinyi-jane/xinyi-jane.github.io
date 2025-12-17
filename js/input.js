@@ -1,8 +1,16 @@
-import { addLyricToActive, lyrics } from './lyrics.js';
+// 使用全局命名空间
+(function() {
+    const addLyricToActive = window.App.addLyricToActive;
+    const lyrics = window.App.lyrics;
+    
+    if (!addLyricToActive || !lyrics) {
+        console.error('Lyrics module not initialized!');
+        return;
+    }
 
-// 输入框处理逻辑
-const textInput = document.getElementById('textInput');
-const submitBtn = document.getElementById('submitBtn');
+    // 输入框处理逻辑
+    const textInput = document.getElementById('textInput');
+    const submitBtn = document.getElementById('submitBtn');
 
 function addUserInput() {
     const inputText = textInput.value.trim();
@@ -19,10 +27,10 @@ function addUserInput() {
 // 点击提交按钮
 submitBtn.addEventListener('click', addUserInput);
 
-// 按回车键提交
-textInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-        addUserInput();
-    }
-});
-
+    // 按回车键提交
+    textInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            addUserInput();
+        }
+    });
+})();
