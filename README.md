@@ -1,6 +1,30 @@
-# 勇气 - 歌词展示项目
+# xinyi-jane.github.io
+
+个人主页和项目集合，包含多个使用 Vanilla Web Development 开发的项目。
+
+## 🚀 在线访问
+
+- **主页**: [https://xinyi-jane.github.io/](https://xinyi-jane.github.io/)
+- **Hacker Style Resume**: [https://xinyi-jane.github.io/hacker-style-resume/](https://xinyi-jane.github.io/hacker-style-resume/)
+
+## 📦 项目列表
+
+### 1. 勇气 - 歌词展示项目
 
 一个具有黑客帝国风格的数字雨背景效果的歌词滚动展示应用。支持歌词从左到右滚动显示，并允许用户实时输入自定义文本。
+
+**访问地址**: [https://xinyi-jane.github.io/](https://xinyi-jane.github.io/)
+
+### 2. Hacker Style Resume
+
+一个采用黑客风格设计的个人简历页面，使用纯 Vanilla Web Development 技术栈开发。
+
+**访问地址**: [https://xinyi-jane.github.io/hacker-style-resume/](https://xinyi-jane.github.io/hacker-style-resume/)  
+**项目仓库**: [hacker-style-resume](https://github.com/xinyi-jane/hacker-style-resume)
+
+---
+
+## 勇气 - 歌词展示项目详情
 
 ## 项目结构
 
