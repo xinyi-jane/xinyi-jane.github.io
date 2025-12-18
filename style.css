@@ -5,18 +5,19 @@
 }
 
 :root {
-    --crt-bg: #0a0a0a;
-    --crt-green: #00ff41;
-    --crt-green-dim: #00cc33;
-    --crt-yellow: #ffff00;
-    --crt-cyan: #00ffff;
-    --crt-magenta: #ff00ff;
-    --crt-red: #ff0000;
-    --crt-blue: #0000ff;
-    --crt-border: #00ff41;
-    --crt-text: #00ff41;
-    --crt-text-dim: #00cc33;
-    --crt-shadow: rgba(0, 255, 65, 0.3);
+    --crt-bg: #f5f5f5;
+    --crt-green: #00a86b;
+    --crt-green-dim: #008855;
+    --crt-yellow: #d4a017;
+    --crt-cyan: #008b8b;
+    --crt-magenta: #8b008b;
+    --crt-red: #cc0000;
+    --crt-blue: #0066cc;
+    --crt-border: #333333;
+    --crt-text: #1a1a1a;
+    --crt-text-dim: #4a4a4a;
+    --crt-shadow: rgba(0, 0, 0, 0.1);
+    --crt-accent: #00a86b;
 }
 
 body {
@@ -28,6 +29,9 @@ body {
     overflow-x: hidden;
     min-height: 100vh;
     position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
 /* CRT Screen Effect */
@@ -38,7 +42,7 @@ body {
     padding: 20px;
 }
 
-/* Scanlines Effect */
+/* Scanlines Effect - Lighter for light background */
 .scanlines {
     position: fixed;
     top: 0;
@@ -47,8 +51,8 @@ body {
     height: 100%;
     background: repeating-linear-gradient(
         0deg,
-        rgba(0, 0, 0, 0.15),
-        rgba(0, 0, 0, 0.15) 1px,
+        rgba(0, 0, 0, 0.03),
+        rgba(0, 0, 0, 0.03) 1px,
         transparent 1px,
         transparent 2px
     );
@@ -75,7 +79,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+    background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.05) 100%);
     pointer-events: none;
     z-index: 999;
     animation: flicker 0.15s infinite;
@@ -94,10 +98,10 @@ body {
     margin-bottom: 40px;
     padding: 30px 20px;
     border: 3px solid var(--crt-border);
-    background: rgba(0, 0, 0, 0.5);
+    background: #ffffff;
     box-shadow: 
-        0 0 20px var(--crt-shadow),
-        inset 0 0 20px rgba(0, 0, 0, 0.5);
+        0 4px 6px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
     position: relative;
 }
 
@@ -109,20 +113,20 @@ body {
     width: 80px;
     height: 80px;
     margin: 0 auto;
-    background: var(--crt-green);
-    border: 3px solid var(--crt-text);
+    background: var(--crt-accent);
+    border: 3px solid var(--crt-border);
     position: relative;
-    box-shadow: 0 0 20px var(--crt-shadow);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     animation: pixelPulse 2s ease-in-out infinite;
 }
 
 @keyframes pixelPulse {
     0%, 100% { 
-        box-shadow: 0 0 20px var(--crt-shadow);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         transform: scale(1);
     }
     50% { 
-        box-shadow: 0 0 30px var(--crt-shadow);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         transform: scale(1.05);
     }
 }
@@ -130,7 +134,8 @@ body {
 .pixel-eye {
     width: 12px;
     height: 12px;
-    background: var(--crt-bg);
+    background: #ffffff;
+    border: 1px solid var(--crt-border);
     position: absolute;
     top: 25px;
     animation: blink 3s infinite;
@@ -152,7 +157,7 @@ body {
 .pixel-mouth {
     width: 30px;
     height: 15px;
-    border: 2px solid var(--crt-bg);
+    border: 2px solid #ffffff;
     border-top: none;
     border-radius: 0 0 30px 30px;
     position: absolute;
@@ -163,45 +168,33 @@ body {
 
 .title {
     font-size: 2rem;
-    color: var(--crt-green);
+    color: var(--crt-accent);
     margin: 20px 0;
     text-shadow: 
-        0 0 10px var(--crt-shadow),
-        0 0 20px var(--crt-shadow);
+        2px 2px 0px rgba(0, 0, 0, 0.1);
     letter-spacing: 3px;
     line-height: 1.6;
-    animation: titleGlow 2s ease-in-out infinite;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
 }
 
-@keyframes titleGlow {
-    0%, 100% { 
-        text-shadow: 
-            0 0 10px var(--crt-shadow),
-            0 0 20px var(--crt-shadow);
-    }
-    50% { 
-        text-shadow: 
-            0 0 15px var(--crt-shadow),
-            0 0 30px var(--crt-shadow),
-            0 0 40px var(--crt-shadow);
-    }
-}
 
 .subtitle-box {
     border: 2px solid var(--crt-border);
     padding: 10px 20px;
     display: inline-block;
-    background: rgba(0, 0, 0, 0.3);
+    background: #f9f9f9;
     box-shadow: 
-        0 0 10px var(--crt-shadow),
-        inset 0 0 10px rgba(0, 0, 0, 0.5);
+        0 2px 4px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .subtitle {
     font-size: 0.8rem;
     color: var(--crt-yellow);
-    text-shadow: 0 0 5px var(--crt-yellow);
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1);
     margin: 0;
+    font-weight: normal;
 }
 
 /* Main Content */
@@ -211,11 +204,11 @@ body {
 
 .assignment-section {
     border: 4px double var(--crt-border);
-    background: rgba(0, 0, 0, 0.5);
+    background: #ffffff;
     padding: 30px;
     box-shadow: 
-        0 0 30px var(--crt-shadow),
-        inset 0 0 30px rgba(0, 0, 0, 0.5);
+        0 4px 6px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
     position: relative;
 }
 
@@ -224,7 +217,8 @@ body {
     margin-bottom: 30px;
     padding: 15px;
     border: 2px solid var(--crt-border);
-    background: rgba(0, 0, 0, 0.7);
+    background: #f9f9f9;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .pixel-corner {
@@ -264,11 +258,13 @@ body {
 
 .section-title {
     font-size: 1.2rem;
-    color: var(--crt-cyan);
+    color: var(--crt-accent);
     text-align: center;
-    text-shadow: 0 0 10px var(--crt-cyan);
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1);
     letter-spacing: 2px;
     margin: 0;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
 }
 
 /* Projects Container */
@@ -280,19 +276,20 @@ body {
 
 .project-item {
     border: 2px solid var(--crt-border);
-    background: rgba(0, 0, 0, 0.7);
+    background: #ffffff;
     padding: 20px;
     display: flex;
     gap: 20px;
     transition: all 0.3s;
-    box-shadow: 0 0 10px var(--crt-shadow);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: relative;
 }
 
 .project-item:hover {
-    background: rgba(0, 255, 65, 0.1);
-    box-shadow: 0 0 20px var(--crt-shadow);
+    background: #f0f8f5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     transform: translateX(5px);
+    border-color: var(--crt-accent);
 }
 
 .project-item::before {
@@ -301,7 +298,7 @@ body {
     left: -15px;
     top: 50%;
     transform: translateY(-50%);
-    color: var(--crt-green);
+    color: var(--crt-accent);
     font-size: 1.5rem;
     opacity: 0;
     transition: opacity 0.3s;
@@ -314,16 +311,18 @@ body {
 .project-number {
     font-size: 1.5rem;
     color: var(--crt-yellow);
-    text-shadow: 0 0 10px var(--crt-yellow);
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1);
     min-width: 60px;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 2px solid var(--crt-yellow);
-    background: rgba(255, 255, 0, 0.1);
+    background: #fff9e6;
     height: fit-content;
     padding: 10px;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
 }
 
 .project-content {
@@ -332,10 +331,12 @@ body {
 
 .project-title {
     font-size: 1rem;
-    color: var(--crt-green);
+    color: var(--crt-accent);
     margin-bottom: 10px;
-    text-shadow: 0 0 5px var(--crt-shadow);
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1);
     line-height: 1.6;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
 }
 
 .project-desc {
@@ -343,6 +344,8 @@ body {
     color: var(--crt-text-dim);
     margin-bottom: 15px;
     line-height: 1.8;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
 }
 
 .project-tech {
@@ -357,26 +360,31 @@ body {
     color: var(--crt-cyan);
     padding: 5px 10px;
     border: 1px solid var(--crt-cyan);
-    background: rgba(0, 255, 255, 0.1);
-    text-shadow: 0 0 5px var(--crt-cyan);
+    background: #e6f7f7;
+    text-shadow: none;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
 }
 
 .pixel-link {
     display: inline-block;
     font-size: 0.7rem;
-    color: var(--crt-green);
+    color: var(--crt-accent);
     text-decoration: none;
-    border: 2px solid var(--crt-green);
+    border: 2px solid var(--crt-accent);
     padding: 8px 15px;
-    background: rgba(0, 255, 65, 0.1);
+    background: #e6f5f0;
     transition: all 0.3s;
-    text-shadow: 0 0 5px var(--crt-shadow);
-    box-shadow: 0 0 10px var(--crt-shadow);
+    text-shadow: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
 }
 
 .pixel-link:hover {
-    background: rgba(0, 255, 65, 0.3);
-    box-shadow: 0 0 20px var(--crt-shadow);
+    background: var(--crt-accent);
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     transform: scale(1.05);
 }
 
@@ -389,10 +397,10 @@ body {
     text-align: center;
     padding: 30px 20px;
     border: 2px solid var(--crt-border);
-    background: rgba(0, 0, 0, 0.5);
+    background: #ffffff;
     box-shadow: 
-        0 0 20px var(--crt-shadow),
-        inset 0 0 20px rgba(0, 0, 0, 0.5);
+        0 4px 6px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .footer-line {
@@ -400,14 +408,17 @@ body {
     margin-bottom: 15px;
     font-size: 0.6rem;
     letter-spacing: 1px;
+    opacity: 0.6;
 }
 
 .footer-text {
     font-size: 0.7rem;
     color: var(--crt-yellow);
-    text-shadow: 0 0 5px var(--crt-yellow);
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1);
     margin-bottom: 10px;
     animation: blinkText 1.5s infinite;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
 }
 
 @keyframes blinkText {
@@ -419,6 +430,8 @@ body {
     font-size: 0.6rem;
     color: var(--crt-text-dim);
     margin-top: 10px;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
 }
 
 /* Responsive */
@@ -498,7 +511,7 @@ body {
     }
 }
 
-/* CRT Screen Curvature Effect */
+/* CRT Screen Curvature Effect - Lighter for light background */
 .screen::after {
     content: '';
     position: fixed;
@@ -507,8 +520,7 @@ body {
     width: 100%;
     height: 100%;
     background: 
-        radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.2) 100%),
-        linear-gradient(to bottom, rgba(0, 255, 65, 0.03) 0%, transparent 50%, rgba(0, 255, 65, 0.03) 100%);
+        radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.02) 100%);
     pointer-events: none;
     z-index: 998;
 }
