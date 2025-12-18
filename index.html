@@ -3,30 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>勇气 - 歌词展示</title>
+    <title>xinyi-jane - Projects</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <canvas id="matrix"></canvas>
-    
-    <div class="projects-nav">
-        <div class="nav-title">Projects</div>
-        <a href="https://xinyi-jane.github.io/hacker-style-resume/" class="project-link" target="_blank">
-            <span class="link-icon">></span>
-            <span class="link-text">Hacker Style Resume</span>
-        </a>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">xinyi-jane</h1>
+            <p class="subtitle">Web Developer & Creative Coder</p>
+        </header>
+
+        <main class="main">
+            <section class="projects-section">
+                <h2 class="section-title">Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-icon">🎵</div>
+                        <h3 class="project-title">勇气 - 歌词展示</h3>
+                        <p class="project-description">具有黑客帝国风格的数字雨背景效果的歌词滚动展示应用</p>
+                        <div class="project-tags">
+                            <span class="tag">Canvas</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Animation</span>
+                        </div>
+                        <a href="https://xinyi-jane.github.io/courage-lyrics-display/" class="project-link" target="_blank">
+                            View Project →
+                        </a>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-icon">💻</div>
+                        <h3 class="project-title">Hacker Style Resume</h3>
+                        <p class="project-description">采用黑客风格设计的个人简历页面，带有打字机效果</p>
+                        <div class="project-tags">
+                            <span class="tag">Vanilla JS</span>
+                            <span class="tag">CSS3</span>
+                            <span class="tag">Terminal</span>
+                        </div>
+                        <a href="https://xinyi-jane.github.io/hacker-style-resume/" class="project-link" target="_blank">
+                            View Project →
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>Built with ❤️ using Vanilla Web Development</p>
+        </footer>
     </div>
-    
-    <div class="input-container">
-        <input type="text" id="textInput" placeholder="输入文本，按回车或点击提交显示">
-        <button id="submitBtn">提交</button>
-    </div>
-    
-    <!-- 按顺序加载模块文件 -->
-    <script src="js/canvas.js"></script>
-    <script src="js/matrix.js"></script>
-    <script src="js/lyrics.js"></script>
-    <script src="js/input.js"></script>
-    <script src="js/main.js"></script>
 </body>
 </html>
