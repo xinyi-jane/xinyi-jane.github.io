@@ -340,7 +340,7 @@ body {
 }
 
 .project-desc {
-    font-size: 0.7rem;
+    font-size: 0.85rem;
     color: var(--crt-text-dim);
     margin-bottom: 15px;
     line-height: 1.8;
