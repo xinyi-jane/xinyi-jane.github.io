@@ -26,6 +26,15 @@
 
 **技术栈**: HTML5, CSS3, Vanilla JavaScript
 
+### 3. Research Group Website
+
+课题组官方网站，包含主页（近期科研进展）、成员介绍、工作成果和完整News页面。采用清新蓝色主题，响应式设计。
+
+**访问地址**: [https://xinyi-jane.github.io/research-group-website/](https://xinyi-jane.github.io/research-group-website/)  
+**项目仓库**: [research-group-website](https://github.com/xinyi-jane/research-group-website)
+
+**技术栈**: HTML5, CSS3, Vanilla JavaScript
+
 ## 🎨 设计特点
 
 - **清新风格**: 使用渐变背景和卡片式设计
